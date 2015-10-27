@@ -1,4 +1,12 @@
 # Gathering
 Aplikacja wykonana w ramach kursu Inżynierii oprogramowania
 
-Dane kontaktowe:
+#### Dane kontaktowe:
+
+#### Wizja:
+
+#### Interesariusze:
+
+#### Etapy projektu:
+
+
