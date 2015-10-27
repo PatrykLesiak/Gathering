@@ -6,17 +6,18 @@ Aplikacja wykonana w ramach kursu Inżynierii oprogramowania
 * Lesiak Patryk   patryk.lesiakk[at]gmail.com  
 * Socha Rafa      rafalsocha3[at]gmail.com 
 
-#### Opis systemu:
-
-System służy do zarządzania kalendarzem wydarzeń i imprez. Jest narzędziem, które pomaga organizatorom przygotować formularz zapisu na wydarzenia. Uczestnicy dostają możliwość przeglądania wszystkich dostępnych wydarzeń oraz wygodnego zadeklarowania chęci wzięcia udziału oraz opłacenia wydarzenia. Użytkownicy mają możliwość oceny eventów po ich zakończeniu, co jest doskonałą informacją zwrotną dla organizatorów.
-
 #### Wizja:
 
-Oferowany produkt, bedzie przydatnym narzędziem ...
+Oferowany produkt, to przydatne narzędzie dla oraganizatorów imprez masowych i kulturalnych.
+Dzięki niemu ułatwimy zarządzanie kalendarzem wydarzeń w hotelach, biurach turystycznych, a nawet kołach naukowych.
+
+Z perspektywy organizatorów jest to spójne i kompleksowe narzędzie do polecania imprez, zbierania listy nazwisk i przydatnych informacji o uczestnikach, które dodatkowo umożliwia wirtualne płatności oraz zbieranie informacji zwrotnych od uczestników.
+
+Klienci będą zadowoleni z możliwości kontrolowania terminów spotkań i wydarzeń, na których chcą się pojawić. Nigdy nie będą musieli pojawić się w dwóch miejscach jednocześnie. Pracę z produktem ułatwi brak konieczności opłacania wycieczek gotówką, wyrażenia chęci otrzymania gadżetów, a dodatkowo możliwość oceny danego eventu.
 
 #### Interesariusze:
 
-Twórcy
+Twórcy:
 * Właściciele pomysłu
 * Programiści
 
@@ -26,8 +27,10 @@ Klienci:
 * Biura turystyczne
 * Organizatorzy imprez masowych, kulturalnych itp.
 
+#### Opis systemu:
+
+System służy do zarządzania kalendarzem wydarzeń i imprez. Jest narzędziem, które pomaga organizatorom przygotować formularz zapisu na wydarzenia. Uczestnicy dostają możliwość przeglądania wszystkich dostępnych wydarzeń oraz wygodnego zadeklarowania chęci wzięcia udziału oraz opłacenia wydarzenia. Użytkownicy mają możliwość oceny eventów po ich zakończeniu, co jest doskonałą informacją zwrotną dla organizatorów.
+
 #### Etapy projektu:
 
 W trakcie ustalania z prowadzcym.
-
-
