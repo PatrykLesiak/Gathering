@@ -15,20 +15,6 @@ Z perspektywy organizatorów jest to spójne i kompleksowe narzędzie do polecan
 
 Klienci będą zadowoleni z możliwości kontrolowania terminów spotkań i wydarzeń, na których chcą się pojawić. Nigdy nie będą musieli pojawić się w dwóch miejscach jednocześnie. Pracę z produktem ułatwi brak konieczności opłacania wycieczek gotówką, wyrażenia chęci otrzymania gadżetów, a dodatkowo możliwość oceny danego eventu.
 
-#### Interesariusze:
-
-Twórcy:
-* Właściciele pomysłu
-* Programiści
-
-Klienci:
-* Koła naukowe
-* Hotele
-* Biura turystyczne
-* Organizatorzy imprez masowych, kulturalnych itp.
-
-dopisać oczekiwania dla każdego interesariusza, rozbić Hotele na konkretne stanowiska, jakie działania zgodne z ich oczekiwanianimi
-
 #### Opis systemu:
 
 System służy do zarządzania kalendarzem wydarzeń i imprez. Jest narzędziem, które pomaga organizatorom przygotować formularz zapisu na wydarzenia. Uczestnicy dostają możliwość przeglądania wszystkich dostępnych wydarzeń oraz wygodnego zadeklarowania chęci wzięcia udziału oraz opłacenia wydarzenia. Użytkownicy mają możliwość oceny eventów po ich zakończeniu, co jest doskonałą informacją zwrotną dla organizatorów.
