@@ -4,7 +4,7 @@ Aplikacja wykonana w ramach kursu Inżynierii oprogramowania
 #### Dane kontaktowe:
 * Kosior Piotr -  tripletime [at] tlen.pl 
 * Lesiak Patryk - patryk.lesiakk [at] gmail.com  
-* Socha Rafa -    rafalsocha3 [at] gmail.com 
+* Socha Rafał -    rafalsocha3 [at] gmail.com 
 
 #### Wizja:
 
