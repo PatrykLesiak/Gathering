@@ -1,6 +1,8 @@
 # Gathering
 Aplikacja wykonana w ramach kursu Inżynierii oprogramowania
 
+W celu dokładniejszego zapoznania się z projektem, zapraszamy na [WIKI](https://github.com/PatrykLesiak/Gathering/wiki)
+
 #### Dane kontaktowe:
 * Kosior Piotr -  tripletime [at] tlen.pl 
 * Lesiak Patryk - patryk.lesiakk [at] gmail.com  
@@ -26,6 +28,3 @@ System służy do zarządzania kalendarzem wydarzeń i imprez. Jest narzędziem,
 * CSS 3
 * JAVA DB
 * JavaScript
-
-
-
