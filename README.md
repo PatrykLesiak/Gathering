@@ -1,7 +1,7 @@
 # Gathering
-Aplikacja wykonana w ramach kursu Inżynierii oprogramowania
+Aplikacja wykonana w ramach kursu inżynierii oprogramowania.
 
-W celu dokładniejszego zapoznania się z projektem, zapraszamy na [WIKI](https://github.com/PatrykLesiak/Gathering/wiki)
+W celu dokładniejszego zapoznania się z projektem, zapraszamy na [WIKI](https://github.com/PatrykLesiak/Gathering/wiki).
 
 #### Dane kontaktowe:
 * Kosior Piotr -  tripletime [at] tlen.pl 
@@ -10,12 +10,12 @@ W celu dokładniejszego zapoznania się z projektem, zapraszamy na [WIKI](https:
 
 #### Wizja:
 
-Oferowany produkt, to przydatne narzędzie dla oraganizatorów imprez masowych i kulturalnych.
-Dzięki niemu ułatwimy zarządzanie kalendarzem wydarzeń w hotelach, biurach turystycznych, a nawet kołach naukowych.
+Oferowany produkt to przydatne narzędzie dla organizatorów imprez masowych i kulturalnych.
+Dzięki niemu zarządzanie kalendarzem wydarzeń w hotelach, biurach turystycznych, a nawet kołach naukowych staje się bardzo łatwe.
 
-Z perspektywy organizatorów jest to spójne i kompleksowe narzędzie do polecania imprez, zbierania listy nazwisk i przydatnych informacji o uczestnikach, które dodatkowo umożliwia wirtualne płatności oraz zbieranie informacji zwrotnych od uczestników.
+Klienci będą zadowoleni z możliwości kontrolowania terminów spotkań i wydarzeń, na których chcą się pojawić. Praca z produktem da możliwość oceny danego eventu, wyrażenia chęci otrzymania gadżetów oraz przede wszystkim brak konieczności opłacania wycieczek gotówką. Dzięki obsłudze kontroli konfliktów klienci nigdy nie będą musieli pojawić się w dwóch miejscach jednocześnie.
 
-Klienci będą zadowoleni z możliwości kontrolowania terminów spotkań i wydarzeń, na których chcą się pojawić. Nigdy nie będą musieli pojawić się w dwóch miejscach jednocześnie. Pracę z produktem ułatwi brak konieczności opłacania wycieczek gotówką, wyrażenia chęci otrzymania gadżetów, a dodatkowo możliwość oceny danego eventu.
+Z perspektywy organizatorów jest to spójne i kompleksowe narzędzie do polecania imprez, zbierania listy nazwisk i przydatnych informacji o uczestnikach. Dodatkowo umożliwia ono wirtualne płatności oraz zbieranie informacji zwrotnych od uczestników.
 
 #### Opis systemu:
 
