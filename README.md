@@ -20,4 +20,4 @@ Będą zadowoleni z możliwości kontrolowania terminów spotkań i wydarzeń, n
 Praca z produktem da możliwość oceny danego eventu, wyrażenia chęci otrzymania gadżetów oraz przede wszystkim brak konieczności opłacania wycieczek gotówką.
 Dzięki obsłudze kontroli konfliktów klienci nigdy nie będą musieli pojawić się w dwóch miejscach jednocześnie.
 
-W celu dokładniejszego zapoznania się z projektem, zapraszamy na [WIKI](https://github.com/PatrykLesiak/Gathering/wiki).
+#### W celu dokładniejszego zapoznania się z projektem, zapraszamy na [WIKI](https://github.com/PatrykLesiak/Gathering/wiki).
