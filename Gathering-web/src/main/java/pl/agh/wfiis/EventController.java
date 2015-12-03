@@ -1,10 +1,11 @@
 package pl.agh.wfiis;
 
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+
 import pl.agh.wfiis.database.Event;
 import pl.agh.wfiis.model.EventsModel;
 
@@ -15,14 +16,15 @@ public class EventController implements Serializable {
 
     @EJB
     private EventsModel eventsModel;
-     
     
+    final int numberOfShownRandomProjects = 1;
+    List<Event> listOfRandomEvents;
+        
     public EventController() {
     }
     
-    public String getEventTitle() {
-        List<Event> eventList = eventsModel.getAllEvents();
-        return eventList.get(0).getTitle();
+    public List<Event> getRandomEvents() {
+        return eventsModel.getRandomEvents(numberOfShownRandomProjects);
     }
     
 }

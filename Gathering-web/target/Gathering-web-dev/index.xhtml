@@ -13,11 +13,12 @@
                 <div class="jumbotron">
                     <div class="container">
                         <h1>Niektóre wydarzenia</h1>
+                        <br></br>
                         <div class="row">
                             <div class="col-md-12">
                             </div>
                             <table class="table table-hover">
-                                <ui:repeat value="#{randomEvents.getRandomEvents()}" var="randomEvent">
+                                <ui:repeat value="#{eventController.getRandomEvents()}" var="randomEvent">
                                     <tr><td>
                                             <div class="col-md-2 text-center">
                                                 <img src="#{randomEvent.getPicturelink()}" class="img-circle" width="130" height="130"></img>

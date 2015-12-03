@@ -33,10 +33,10 @@ public class EventsModel {
         Random randomGenerator = new Random();
         
         for (int i = 0; i < numberOfShownRandomProjects; i++) {
-            int randomEventId = randomGenerator.nextInt(numberOfProjects) + 1;
+            int randomEventId = randomGenerator.nextInt(numberOfProjects);
             
             while (randomEvents.contains(allEventsFromDatabase.get(randomEventId))) {
-                randomEventId = randomGenerator.nextInt(numberOfProjects) + 1;
+                randomEventId = randomGenerator.nextInt(numberOfProjects);
             }
             
             randomEvents.add(allEventsFromDatabase.get(randomEventId));
