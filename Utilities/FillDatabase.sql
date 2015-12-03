@@ -59,8 +59,8 @@ CREATE TABLE Organizer
 /* Some values for demo */
 
 INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge) 
-    VALUES ('New year cruise party', 
-			'Whole night cruise party to step into new year',
+    VALUES ('Noworoczny rejs statkiem', 
+			'Całonocny rejst statkiem, aby przywitać nowy rok !',
 			DATE('2015-12-31'), 
 			TIME('18:00'),
 			'ul. Zamknięta 18, 80-955 Gdańsk',
@@ -72,4 +72,19 @@ INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink ,
 			18,
 			0						  
 			);	
+			
+INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge) 
+    VALUES ('Opłatek', 
+			'Uroczysta wigilijna wieczerza',
+			DATE('2015-12-24'), 
+			TIME('20:00'),
+			'ul. Zamknięta 18, 80-955 Gdańsk',
+			'http://www.phrz.pl/upload/Gallery/restauracja-folwark-af5c9.jpg',
+			400,
+			500.00,
+			'PLN',
+			'Bal',
+			18,
+			0						  
+			);
 	
