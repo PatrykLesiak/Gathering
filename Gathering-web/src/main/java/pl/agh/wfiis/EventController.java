@@ -17,7 +17,7 @@ public class EventController implements Serializable {
     @EJB
     private EventsModel eventsModel;
     
-    final int numberOfShownRandomProjects = 1;
+    final int numberOfShownRandomProjects = 3;
     List<Event> listOfRandomEvents;
         
     public EventController() {

@@ -1,7 +1,10 @@
+DROP VIEW v_user_role;
 DROP TABLE Event;
-DROP TABLE Participant;
 DROP TABLE Member;
 DROP TABLE Organizer;
+DROP TABLE USERS_GROUPS;
+DROP TABLE Groups;
+DROP TABLE Participant;
 
 CREATE TABLE Event
 (
@@ -27,7 +30,8 @@ CREATE TABLE Participant
 	Surname varchar(255) NOT NULL,
 	Age int NOT NULL,
 	Email varchar(255) NOT NULL,
-	Sex varchar(255) NOT NULL
+	Sex varchar(255) NOT NULL,
+	Password varchar(256) NOT NULL
 );
 
 CREATE TABLE Member
@@ -55,8 +59,38 @@ CREATE TABLE Organizer
 	AccountNumber int NOT NULL
 );
 
+CREATE TABLE Groups
+(
+group_id int PRIMARY KEY NOT NULL,
+group_name varchar(20) NOT NULL
+);
+
+CREATE TABLE USERS_GROUPS
+(
+Id int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+participant_id int NOT NULL,
+group_id int NOT NULL, 
+FOREIGN KEY (group_id) REFERENCES Groups (group_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+FOREIGN KEY (participant_id) REFERENCES Participant (ParticipantId) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE VIEW v_user_role AS
+SELECT  u.Email, u.Password, g.group_name
+ FROM USERS_GROUPS ug
+ INNER JOIN Participant u ON u.ParticipantId = ug.participant_id
+ INNER JOIN Groups g ON g.group_id =  ug.group_id; 
+
 
 /* Some values for demo */
+
+INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password) 
+	VALUES ('Patryk',
+			'Lesiak',
+			23,
+			'pat@les.pl',
+			'M',
+			'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
+			);
 
 INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge) 
     VALUES ('Noworoczny rejs statkiem', 
@@ -87,4 +121,7 @@ INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink ,
 			18,
 			0						  
 			);
+			
+INSERT INTO Groups(group_id,group_name) VALUES (1,'loggedParticipant');
+INSERT INTO USERS_GROUPS(participant_id, group_id) VALUES (1, 1);
 	

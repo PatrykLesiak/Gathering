@@ -6,7 +6,9 @@
 package pl.agh.wfiis.database;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,10 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,6 +39,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Participant.findByEmail", query = "SELECT p FROM Participant p WHERE p.email = :email"),
     @NamedQuery(name = "Participant.findBySex", query = "SELECT p FROM Participant p WHERE p.sex = :sex")})
 public class Participant implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 256)
+    @Column(name = "PASSWORD")
+    private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "participantId")
+    private Collection<UsersGroups> usersGroupsCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -154,6 +165,23 @@ public class Participant implements Serializable {
     @Override
     public String toString() {
         return "pl.agh.wfiis.database.Participant[ participantid=" + participantid + " ]";
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @XmlTransient
+    public Collection<UsersGroups> getUsersGroupsCollection() {
+        return usersGroupsCollection;
+    }
+
+    public void setUsersGroupsCollection(Collection<UsersGroups> usersGroupsCollection) {
+        this.usersGroupsCollection = usersGroupsCollection;
     }
     
 }

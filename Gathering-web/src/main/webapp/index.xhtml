@@ -19,7 +19,8 @@
                             </div>
                             <table class="table table-hover">
                                 <ui:repeat value="#{eventController.getRandomEvents()}" var="randomEvent">
-                                    <tr><td>
+                                    <tr>
+                                        <td>
                                             <div class="col-md-2 text-center">
                                                 <img src="#{randomEvent.getPicturelink()}" class="img-circle" width="130" height="130"></img>
                                             </div>
@@ -31,6 +32,8 @@
                                         </td>
                                     </tr>
                                 </ui:repeat>
+                                <h:outputText value="#{request.userPrincipal}" style="font-size:35px;color:black;" />
+                                <h:outputText value="#{request.isUserInRole('loggedParticipant')}" style="font-size:35px;color:black;" />
                             </table>
                         </div>
                     </div>
