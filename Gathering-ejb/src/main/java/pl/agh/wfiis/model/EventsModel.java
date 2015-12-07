@@ -44,4 +44,8 @@ public class EventsModel {
         
         return randomEvents;
     }
+
+    public Event getEventById(int projectId) {
+        return eventFacade.find(projectId);
+    }
 }

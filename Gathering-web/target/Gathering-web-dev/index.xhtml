@@ -12,7 +12,7 @@
             <ui:define name="content">
                 <div class="jumbotron">
                     <div class="container">
-                        <h1>Niektóre wydarzenia</h1>
+                        <h:outputText value="Niektóre wydarzenia" styleClass="heading" style="font-size: 4em;text-align: center;"/>
                         <br></br>
                         <div class="row">
                             <div class="col-md-12">
@@ -21,19 +21,17 @@
                                 <ui:repeat value="#{eventController.getRandomEvents()}" var="randomEvent">
                                     <tr>
                                         <td>
-                                            <div class="col-md-2 text-center">
-                                                <img src="#{randomEvent.getPicturelink()}" class="img-circle" width="130" height="130"></img>
+                                            <div class="col-md-3 text-center">
+                                                <img src="#{randomEvent.getPicturelink()}" class="img-circle" width="150" height="150"></img>
                                             </div>
-                                            <h:outputLink value="index.xhtml" >
-                                                <h:outputText value="#{randomEvent.title}" style="font-size:35px;color:black;" />
+                                            <h:outputLink value="/Gathering-web/faces/public/event.xhtml?id=#{randomEvent.eventid}" >
+                                                <h:outputText value="#{randomEvent.title}" style="font-size:40px;color:black;" />
                                             </h:outputLink>
                                             <br></br><br></br>
                                             <h:outputText value="Organizator: " style="font-size:20px;" />
                                         </td>
                                     </tr>
                                 </ui:repeat>
-                                <h:outputText value="#{request.userPrincipal}" style="font-size:35px;color:black;" />
-                                <h:outputText value="#{request.isUserInRole('loggedParticipant')}" style="font-size:35px;color:black;" />
                             </table>
                         </div>
                     </div>

@@ -27,4 +27,7 @@ public class EventController implements Serializable {
         return eventsModel.getRandomEvents(numberOfShownRandomProjects);
     }
     
+    public Event getEventById(int projectId) {
+        return eventsModel.getEventById(projectId);
+    }
 }

@@ -40,7 +40,4 @@ public class UserSessionManager implements Serializable {
 	return false;
     }
     
-    public String homeRedirect() {
-        return "faces/index";
-    }
 }

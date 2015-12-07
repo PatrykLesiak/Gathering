@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html">
-        
+
     <body>
         <ui:composition>   
             <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <a class="navbar-brand" href="/Gathering-web/faces/index.xhtml">Gathering</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdownEvents">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><h:link value="Pokarz moje wydarzenia" outcome="userProtected/userEvents" /></li>
-                        <li role="separator" class="divider"></li>
-                    </ul>
-                </li>
-                <li class="dropdown4">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Find<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><h:link value="Cathegory" outcome="index" /></li> 
-                    </ul>
-                </li>
-                <li><h:link value="Logout" outcome="public/logoutMessage" /></li>
-                
-            </ul>
-        </div>
-      </div>
-    </nav>
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/Gathering-web/faces/index.xhtml">Gathering</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdownEvents">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><h:link value="Pokaż moje wydarzenia" outcome="userProtected/userEvents.xhtml" /></li>
+                                    <li role="separator" class="divider"></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown4">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Find<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><h:link value="Cathegory" outcome="" /></li> 
+                                </ul>
+                            </li>
+                            <li><h:link value="Logout" outcome="logoutMessage.xhtml" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </ui:composition>
     </body>
- 
+
 </html>
