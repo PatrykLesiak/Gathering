@@ -37,15 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Participant.findBySurname", query = "SELECT p FROM Participant p WHERE p.surname = :surname"),
     @NamedQuery(name = "Participant.findByAge", query = "SELECT p FROM Participant p WHERE p.age = :age"),
     @NamedQuery(name = "Participant.findByEmail", query = "SELECT p FROM Participant p WHERE p.email = :email"),
-    @NamedQuery(name = "Participant.findBySex", query = "SELECT p FROM Participant p WHERE p.sex = :sex")})
+    @NamedQuery(name = "Participant.findBySex", query = "SELECT p FROM Participant p WHERE p.sex = :sex"),
+    @NamedQuery(name = "Participant.findByPassword", query = "SELECT p FROM Participant p WHERE p.password = :password")})
 public class Participant implements Serializable {
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "PASSWORD")
-    private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "participantId")
-    private Collection<UsersGroups> usersGroupsCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,6 +71,13 @@ public class Participant implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "SEX")
     private String sex;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 256)
+    @Column(name = "PASSWORD")
+    private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "participantId")
+    private Collection<UsersGroups> usersGroupsCollection;
 
     public Participant() {
     }
@@ -85,13 +86,14 @@ public class Participant implements Serializable {
         this.participantid = participantid;
     }
 
-    public Participant(Integer participantid, String name, String surname, int age, String email, String sex) {
+    public Participant(Integer participantid, String name, String surname, int age, String email, String sex, String password) {
         this.participantid = participantid;
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.email = email;
         this.sex = sex;
+        this.password = password;
     }
 
     public Integer getParticipantid() {
@@ -142,6 +144,23 @@ public class Participant implements Serializable {
         this.sex = sex;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @XmlTransient
+    public Collection<UsersGroups> getUsersGroupsCollection() {
+        return usersGroupsCollection;
+    }
+
+    public void setUsersGroupsCollection(Collection<UsersGroups> usersGroupsCollection) {
+        this.usersGroupsCollection = usersGroupsCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -165,23 +184,6 @@ public class Participant implements Serializable {
     @Override
     public String toString() {
         return "pl.agh.wfiis.database.Participant[ participantid=" + participantid + " ]";
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @XmlTransient
-    public Collection<UsersGroups> getUsersGroupsCollection() {
-        return usersGroupsCollection;
-    }
-
-    public void setUsersGroupsCollection(Collection<UsersGroups> usersGroupsCollection) {
-        this.usersGroupsCollection = usersGroupsCollection;
     }
     
 }

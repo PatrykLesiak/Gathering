@@ -28,12 +28,28 @@
                                                 <h:outputText value="#{randomEvent.title}" style="font-size:40px;color:black;" />
                                             </h:outputLink>
                                             <br></br><br></br>
-                                            <h:outputText value="Organizator: " style="font-size:20px;" />
+                                            <h:outputText value="Organizator: #{randomEvent.organizer.companyname}" style="font-size:20px;" />
                                         </td>
                                     </tr>
                                 </ui:repeat>
                             </table>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h2>Kontakt</h2>
+                        <p>Telefon</p>
+                        <p>Email</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h2>Współpraca</h2>
+                        <p>cos</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h2>Kariera</h2>
+                        <p>cos</p>
                     </div>
                 </div>
             </ui:define>

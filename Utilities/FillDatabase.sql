@@ -6,6 +6,18 @@ DROP TABLE USERS_GROUPS;
 DROP TABLE Groups;
 DROP TABLE Participant;
 
+CREATE TABLE Organizer
+(
+	OrganizerId int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+	CompanyName varchar(255) NOT NULL,
+	CompanyIdentificationNumber int NOT NULL,
+	RepresentativeName varchar(255) NOT NULL,
+	RepresentativeSurname varchar(255) NOT NULL,
+	Email varchar(255) NOT NULL,
+	PhoneNumber int NOT NULL,
+	AccountNumber varchar(26) NOT NULL
+);
+
 CREATE TABLE Event
 (
 	EventId int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -20,7 +32,9 @@ CREATE TABLE Event
 	Currency varchar(3),
 	Cathegory varchar(255),
 	MinimalAge int,
-	MaximalAge int
+	MaximalAge int,
+	Organizer int NOT NULL,
+	FOREIGN KEY (Organizer) REFERENCES Organizer(OrganizerId)
 );
 
 CREATE TABLE Participant
@@ -47,18 +61,6 @@ CREATE TABLE Member
 	PhoneNumber int NOT NULL
 );
 
-CREATE TABLE Organizer
-(
-	OrganizerId int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-	CompanyName varchar(255) NOT NULL,
-	CompanyIdentificationNumber int NOT NULL,
-	RepresentativeName varchar(255) NOT NULL,
-	RepresentativeSurname varchar(255) NOT NULL,
-	Email varchar(255) NOT NULL,
-	PhoneNumber int NOT NULL,
-	AccountNumber int NOT NULL
-);
-
 CREATE TABLE Groups
 (
 group_id int PRIMARY KEY NOT NULL,
@@ -83,6 +85,16 @@ SELECT  u.Email, u.Password, g.group_name
 
 /* Some values for demo */
 
+INSERT INTO Organizer(CompanyName, CompanyIdentificationNumber, RepresentativeName, RepresentativeSurname, Email, PhoneNumber, AccountNumber)
+	VALUES ('Hotel Wybrzeże',
+			123456,
+			'Patryk',
+			'Lesiak',
+			'recepcja@wybrzeze.pl',
+			667362918,
+			'26987800012321361628'
+			);
+
 INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password) 
 	VALUES ('Patryk',
 			'Lesiak',
@@ -92,7 +104,7 @@ INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password)
 			'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
 			);
 
-INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge) 
+INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge, Organizer) 
     VALUES ('Noworoczny rejs statkiem', 
 			'Całonocny rejst statkiem, aby przywitać nowy rok !',
 			DATE('2015-12-31'), 
@@ -104,10 +116,11 @@ INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink ,
 			'PLN',
 			'Bal',
 			18,
-			0						  
+			0,
+			1
 			);	
 			
-INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge) 
+INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge, Organizer) 
     VALUES ('Opłatek', 
 			'Uroczysta wigilijna wieczerza',
 			DATE('2015-12-24'), 
@@ -119,7 +132,8 @@ INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink ,
 			'PLN',
 			'Bal',
 			18,
-			0						  
+			0,
+			1
 			);
 			
 INSERT INTO Groups(group_id,group_name) VALUES (1,'loggedParticipant');
