@@ -16,7 +16,8 @@
                     <div class="col-md-7 col-md-push-3">
                         <h:outputText value="#{event.title}" styleClass="heading"/><br></br>
                         <h:outputText value="#{event.description}" styleClass="lead"/><br></br>
-                        <h:outputText value="#{event.place}" />
+                        <h:outputText value="#{event.place}" /><br></br>
+                        <h:outputText value="Liczba zapisanych osób: #{event.participantToEventCollection.size()}" />
                     </div>
                     <div class="col-md-5 col-md-pull-7">
                         <img src="#{event.getPicturelink()}" class="img-circle" width="250px" height="250px"></img>

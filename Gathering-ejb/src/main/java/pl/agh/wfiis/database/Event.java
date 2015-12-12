@@ -6,8 +6,10 @@
 package pl.agh.wfiis.database;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,11 +19,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -88,6 +92,8 @@ public class Event implements Serializable {
     @JoinColumn(name = "ORGANIZER", referencedColumnName = "ORGANIZERID")
     @ManyToOne(optional = false)
     private Organizer organizer;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
+    private Collection<ParticipantToEvent> participantToEventCollection;
 
     public Event() {
     }
@@ -206,6 +212,15 @@ public class Event implements Serializable {
 
     public void setOrganizer(Organizer organizer) {
         this.organizer = organizer;
+    }
+
+    @XmlTransient
+    public Collection<ParticipantToEvent> getParticipantToEventCollection() {
+        return participantToEventCollection;
+    }
+
+    public void setParticipantToEventCollection(Collection<ParticipantToEvent> participantToEventCollection) {
+        this.participantToEventCollection = participantToEventCollection;
     }
 
     @Override

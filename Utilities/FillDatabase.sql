@@ -1,4 +1,5 @@
 DROP VIEW v_user_role;
+DROP TABLE Participant_to_Event;
 DROP TABLE Event;
 DROP TABLE Member;
 DROP TABLE Organizer;
@@ -59,6 +60,15 @@ CREATE TABLE Member
 	AccountNumber int,
 	Address varchar(255) NOT NULL,
 	PhoneNumber int NOT NULL
+);
+
+CREATE TABLE Participant_to_Event
+(
+Id int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+Participant int NOT NULL,
+Event int NOT NULL,
+FOREIGN KEY (Participant) REFERENCES Participant(ParticipantId),
+FOREIGN KEY (Event) REFERENCES Event(EventId)
 );
 
 CREATE TABLE Groups
@@ -138,4 +148,6 @@ INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink ,
 			
 INSERT INTO Groups(group_id,group_name) VALUES (1,'loggedParticipant');
 INSERT INTO USERS_GROUPS(participant_id, group_id) VALUES (1, 1);
+
+INSERT INTO Participant_to_Event(Participant, Event) VALUES(1, 1);
 	

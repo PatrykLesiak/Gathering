@@ -76,6 +76,8 @@ public class Participant implements Serializable {
     @Size(min = 1, max = 256)
     @Column(name = "PASSWORD")
     private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "participant")
+    private Collection<ParticipantToEvent> participantToEventCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "participantId")
     private Collection<UsersGroups> usersGroupsCollection;
 
@@ -150,6 +152,15 @@ public class Participant implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @XmlTransient
+    public Collection<ParticipantToEvent> getParticipantToEventCollection() {
+        return participantToEventCollection;
+    }
+
+    public void setParticipantToEventCollection(Collection<ParticipantToEvent> participantToEventCollection) {
+        this.participantToEventCollection = participantToEventCollection;
     }
 
     @XmlTransient

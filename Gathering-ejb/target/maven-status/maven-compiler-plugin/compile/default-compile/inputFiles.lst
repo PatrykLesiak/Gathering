@@ -1,3 +1,4 @@
+C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\database\ParticipantToEvent.java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\facades\ParticipantFacade.java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\facades\EventFacade.java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\facades\AbstractFacade.java
@@ -10,5 +11,6 @@ C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\database\Groups.java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\database\Members.java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\database\Participant.java
+C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\facades\ParticipantToEventFacade.java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\database\UsersGroups.java
 C:\Users\Patryk\Documents\NetBeansProjects\Gathering\Gathering-ejb\src\main\java\pl\agh\wfiis\model\EventsModel.java
