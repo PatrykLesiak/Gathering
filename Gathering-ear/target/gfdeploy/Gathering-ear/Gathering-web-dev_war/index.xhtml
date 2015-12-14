@@ -29,7 +29,9 @@
                                                 <h:outputText value="#{randomEvent.title}" style="font-size:40px;color:black;" />
                                             </h:outputLink>
                                             <br></br><br></br>
-                                            <h:outputText value="Organizator: #{randomEvent.organizer.companyname}" style="font-size:20px;" />
+                                            <h:outputLink value="/Gathering-web/faces/public/organizerProfile.xhtml?id=#{randomEvent.organizer.organizerid}" >
+                                                <h:outputText value="Organizator: #{randomEvent.organizer.companyname}" style="font-size:20px;" />
+                                            </h:outputLink>
                                         </td>
                                     </tr>
                                 </ui:repeat>
