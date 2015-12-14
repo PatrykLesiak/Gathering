@@ -1,6 +1,7 @@
 package pl.agh.wfiis;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -29,5 +30,9 @@ public class EventController implements Serializable {
     
     public Event getEventById(int projectId) {
         return eventsModel.getEventById(projectId);
+    }
+    
+    public Collection<Event> getOrganizerEvents(int organizerId) {
+       return eventsModel.getOrganizerEvents(organizerId);
     }
 }

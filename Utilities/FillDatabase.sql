@@ -1,9 +1,10 @@
 DROP VIEW v_user_role;
+DROP TABLE ORGANIZERS_GROUPS;
+DROP TABLE PARTICIPANTS_GROUPS;
 DROP TABLE Participant_to_Event;
 DROP TABLE Event;
 DROP TABLE Member;
 DROP TABLE Organizer;
-DROP TABLE USERS_GROUPS;
 DROP TABLE Groups;
 DROP TABLE Participant;
 
@@ -16,7 +17,8 @@ CREATE TABLE Organizer
 	RepresentativeSurname varchar(255) NOT NULL,
 	Email varchar(255) NOT NULL,
 	PhoneNumber int NOT NULL,
-	AccountNumber varchar(26) NOT NULL
+	AccountNumber varchar(26) NOT NULL,
+	Password varchar(256) NOT NULL
 );
 
 CREATE TABLE Event
@@ -77,7 +79,7 @@ group_id int PRIMARY KEY NOT NULL,
 group_name varchar(20) NOT NULL
 );
 
-CREATE TABLE USERS_GROUPS
+CREATE TABLE PARTICIPANTS_GROUPS
 (
 Id int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 participant_id int NOT NULL,
@@ -86,23 +88,39 @@ FOREIGN KEY (group_id) REFERENCES Groups (group_id) ON DELETE NO ACTION ON UPDAT
 FOREIGN KEY (participant_id) REFERENCES Participant (ParticipantId) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
+CREATE TABLE ORGANIZERS_GROUPS
+(
+Id int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+organizer_id int NOT NULL,
+group_id int NOT NULL, 
+FOREIGN KEY (group_id) REFERENCES Groups (group_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+FOREIGN KEY (organizer_id) REFERENCES Organizer (OrganizerId) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
 CREATE VIEW v_user_role AS
-SELECT  u.Email, u.Password, g.group_name
- FROM USERS_GROUPS ug
- INNER JOIN Participant u ON u.ParticipantId = ug.participant_id
- INNER JOIN Groups g ON g.group_id =  ug.group_id; 
+SELECT  p.Email, p.Password, g.group_name
+ FROM PARTICIPANTS_GROUPS pg
+ INNER JOIN Participant p ON p.ParticipantId = pg.participant_id
+ INNER JOIN Groups g ON g.group_id =  pg.group_id
+UNION
+SELECT  o.Email, o.Password, g.group_name
+ FROM ORGANIZERS_GROUPS og
+ INNER JOIN Organizer o ON o.OrganizerId = og.organizer_id
+ INNER JOIN Groups g ON g.group_id =  og.group_id;
+
 
 
 /* Some values for demo */
 
-INSERT INTO Organizer(CompanyName, CompanyIdentificationNumber, RepresentativeName, RepresentativeSurname, Email, PhoneNumber, AccountNumber)
+INSERT INTO Organizer(CompanyName, CompanyIdentificationNumber, RepresentativeName, RepresentativeSurname, Email, PhoneNumber, AccountNumber, Password)
 	VALUES ('Hotel Wybrzeże',
 			123456,
 			'Patryk',
 			'Lesiak',
 			'recepcja@wybrzeze.pl',
 			667362918,
-			'26987800012321361628'
+			'26987800012321361628',
+                        'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
 			);
 
 INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password) 
@@ -147,7 +165,10 @@ INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink ,
 			);
 			
 INSERT INTO Groups(group_id,group_name) VALUES (1,'loggedParticipant');
-INSERT INTO USERS_GROUPS(participant_id, group_id) VALUES (1, 1);
+INSERT INTO Groups(group_id,group_name) VALUES (2,'loggedOrganizer');
+
+INSERT INTO PARTICIPANTS_GROUPS(participant_id, group_id) VALUES (1, 1);
+INSERT INTO ORGANIZERS_GROUPS(organizer_id, group_id) VALUES (1, 2);
 
 INSERT INTO Participant_to_Event(Participant, Event) VALUES(1, 1);
 	

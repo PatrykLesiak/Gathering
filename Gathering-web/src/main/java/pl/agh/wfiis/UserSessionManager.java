@@ -8,19 +8,20 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import pl.agh.wfiis.database.Participant;
+import pl.agh.wfiis.model.ParticipantModel;
 
 @Named(value = "userSessionManager")
 @SessionScoped
 public class UserSessionManager implements Serializable {
     
+    @EJB
+    ParticipantModel participantModel;
+    
     @Inject
     private HttpServletRequest request;
     
     public UserSessionManager() {}
-    
-    public Boolean isUserLoggedin() {
-        return isUserInRole("loggedParticipant");
-    }
     
     public void logOut() {
 	HttpSession session = getHttpSession();
@@ -34,10 +35,15 @@ public class UserSessionManager implements Serializable {
     
     public boolean isUserInRole(String roleName) {
         if(request.getUserPrincipal() != null) {
-            return request.isUserInRole("loggedParticipant");
+            return request.isUserInRole(roleName);
         }
 
 	return false;
+    }
+    
+    public int getUserId() {
+        Participant participant = participantModel.getUserByEmail(request.getUserPrincipal().getName());
+        return participant.getParticipantid();
     }
     
 }

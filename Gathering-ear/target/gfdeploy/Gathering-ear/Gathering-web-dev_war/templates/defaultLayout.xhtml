@@ -18,11 +18,14 @@
  
     <h:body>
         <h:panelGroup id="wrapperPanel">
-            <h:panelGroup id="loggedUserNavbar" rendered="#{(!userSessionManager.isUserLoggedin())}">
+            <h:panelGroup id="unloggedUserNavbar" rendered="#{(!userSessionManager.isUserInRole('loggedParticipant')) and !userSessionManager.isUserInRole('loggedOrganizer') }">
                 <ui:include src="navbarAnonymus.xhtml"/>
             </h:panelGroup>
-            <h:panelGroup id="unloggedUserNavbar" rendered="#{userSessionManager.isUserLoggedin()}">
-                <ui:include src="navbarLoggedIn.xhtml"/>
+            <h:panelGroup id="participantLoggedUserNavbar" rendered="#{userSessionManager.isUserInRole('loggedParticipant')}">
+                <ui:include src="navbarLoggedParticipant.xhtml"/>
+            </h:panelGroup>
+            <h:panelGroup id="organizerLoggedUserNavbar" rendered="#{userSessionManager.isUserInRole('loggedOrganizer')}">
+                <ui:include src="navbarLoggedOrganizer.xhtml"/>
             </h:panelGroup>
         </h:panelGroup>
         

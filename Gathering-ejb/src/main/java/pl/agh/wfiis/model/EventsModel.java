@@ -1,6 +1,7 @@
 package pl.agh.wfiis.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import javax.ejb.EJB;
@@ -8,6 +9,8 @@ import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import pl.agh.wfiis.facades.EventFacade;
 import pl.agh.wfiis.database.Event;
+import pl.agh.wfiis.database.Organizer;
+import pl.agh.wfiis.facades.OrganizerFacade;
 
 @Stateless
 @LocalBean
@@ -15,6 +18,9 @@ public class EventsModel {
     
     @EJB
     private EventFacade eventFacade;
+    
+    @EJB
+    private OrganizerFacade organizerFacade;
     
     public List<Event> getAllEvents() {
         List<Event> list = new ArrayList();
@@ -47,5 +53,10 @@ public class EventsModel {
 
     public Event getEventById(int projectId) {
         return eventFacade.find(projectId);
+    }
+    
+    public Collection<Event> getOrganizerEvents(int organizerId) {
+        Organizer organizer = organizerFacade.find(organizerId);
+        return organizer.getEventCollection();
     }
 }
