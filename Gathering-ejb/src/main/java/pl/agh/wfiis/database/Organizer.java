@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Organizer.findByRepresentativesurname", query = "SELECT o FROM Organizer o WHERE o.representativesurname = :representativesurname"),
     @NamedQuery(name = "Organizer.findByEmail", query = "SELECT o FROM Organizer o WHERE o.email = :email"),
     @NamedQuery(name = "Organizer.findByPhonenumber", query = "SELECT o FROM Organizer o WHERE o.phonenumber = :phonenumber"),
-    @NamedQuery(name = "Organizer.findByAccountnumber", query = "SELECT o FROM Organizer o WHERE o.accountnumber = :accountnumber")})
+    @NamedQuery(name = "Organizer.findByAccountnumber", query = "SELECT o FROM Organizer o WHERE o.accountnumber = :accountnumber"),
+    @NamedQuery(name = "Organizer.findByPassword", query = "SELECT o FROM Organizer o WHERE o.password = :password")})
 public class Organizer implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -81,6 +82,13 @@ public class Organizer implements Serializable {
     @Size(min = 1, max = 26)
     @Column(name = "ACCOUNTNUMBER")
     private String accountnumber;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 256)
+    @Column(name = "PASSWORD")
+    private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizerId")
+    private Collection<OrganizersGroups> organizersGroupsCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizer")
     private Collection<Event> eventCollection;
 
@@ -91,7 +99,7 @@ public class Organizer implements Serializable {
         this.organizerid = organizerid;
     }
 
-    public Organizer(Integer organizerid, String companyname, int companyidentificationnumber, String representativename, String representativesurname, String email, int phonenumber, String accountnumber) {
+    public Organizer(Integer organizerid, String companyname, int companyidentificationnumber, String representativename, String representativesurname, String email, int phonenumber, String accountnumber, String password) {
         this.organizerid = organizerid;
         this.companyname = companyname;
         this.companyidentificationnumber = companyidentificationnumber;
@@ -100,6 +108,7 @@ public class Organizer implements Serializable {
         this.email = email;
         this.phonenumber = phonenumber;
         this.accountnumber = accountnumber;
+        this.password = password;
     }
 
     public Integer getOrganizerid() {
@@ -164,6 +173,23 @@ public class Organizer implements Serializable {
 
     public void setAccountnumber(String accountnumber) {
         this.accountnumber = accountnumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @XmlTransient
+    public Collection<OrganizersGroups> getOrganizersGroupsCollection() {
+        return organizersGroupsCollection;
+    }
+
+    public void setOrganizersGroupsCollection(Collection<OrganizersGroups> organizersGroupsCollection) {
+        this.organizersGroupsCollection = organizersGroupsCollection;
     }
 
     @XmlTransient

@@ -8,14 +8,14 @@ package pl.agh.wfiis.facades;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import pl.agh.wfiis.database.UsersGroups;
+import pl.agh.wfiis.database.Cathegory;
 
 /**
  *
  * @author Patryk
  */
 @Stateless
-public class UsersGroupsFacade extends AbstractFacade<UsersGroups> {
+public class CathegoryFacade extends AbstractFacade<Cathegory> {
     @PersistenceContext(unitName = "pl.agh.wfiis_Gathering-ejb_ejb_devPU")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class UsersGroupsFacade extends AbstractFacade<UsersGroups> {
         return em;
     }
 
-    public UsersGroupsFacade() {
-        super(UsersGroups.class);
+    public CathegoryFacade() {
+        super(Cathegory.class);
     }
     
 }

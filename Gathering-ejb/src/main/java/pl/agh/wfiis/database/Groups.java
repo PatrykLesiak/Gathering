@@ -45,7 +45,9 @@ public class Groups implements Serializable {
     @Column(name = "GROUP_NAME")
     private String groupName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "groupId")
-    private Collection<UsersGroups> usersGroupsCollection;
+    private Collection<OrganizersGroups> organizersGroupsCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "groupId")
+    private Collection<ParticipantsGroups> participantsGroupsCollection;
 
     public Groups() {
     }
@@ -76,12 +78,21 @@ public class Groups implements Serializable {
     }
 
     @XmlTransient
-    public Collection<UsersGroups> getUsersGroupsCollection() {
-        return usersGroupsCollection;
+    public Collection<OrganizersGroups> getOrganizersGroupsCollection() {
+        return organizersGroupsCollection;
     }
 
-    public void setUsersGroupsCollection(Collection<UsersGroups> usersGroupsCollection) {
-        this.usersGroupsCollection = usersGroupsCollection;
+    public void setOrganizersGroupsCollection(Collection<OrganizersGroups> organizersGroupsCollection) {
+        this.organizersGroupsCollection = organizersGroupsCollection;
+    }
+
+    @XmlTransient
+    public Collection<ParticipantsGroups> getParticipantsGroupsCollection() {
+        return participantsGroupsCollection;
+    }
+
+    public void setParticipantsGroupsCollection(Collection<ParticipantsGroups> participantsGroupsCollection) {
+        this.participantsGroupsCollection = participantsGroupsCollection;
     }
 
     @Override

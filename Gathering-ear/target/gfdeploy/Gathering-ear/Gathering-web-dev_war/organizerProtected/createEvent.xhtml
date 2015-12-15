@@ -11,8 +11,53 @@
             <ui:define name="pageTitle">Utwórz wydarzenie</ui:define>
 
             <ui:define name="content">
-
-
+                <div class="col-md-6 col-md-offset-3">
+                    <h2>Nowe wydarzenie:</h2>
+                    <h:form>
+                        <div class="form-group">
+                            <label for="eventTitle">Nazwa wydarzenia</label>
+                            <h:inputText styleClass="form-control" id="eventTitle" value="#{createEvent.title}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDescription">Opis wydarzenia</label>
+                            <h:inputText styleClass="form-control" id="eventDescription" value="#{createEvent.description}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDate">Data wydarzenia</label>
+                            <h:inputText styleClass="form-control" id="eventDate" value="#{createEvent.eventData}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventPlace">Miejsce</label>
+                            <h:inputText styleClass="form-control" id="eventPlace" value="#{createEvent.place}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventPictureLink">Link do obrazka</label>
+                            <h:inputText styleClass="form-control" id="eventPictureLink" value="#{createEvent.pictureLink}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventMaxPeople">Maksymalna liczba uczestników</label>
+                            <h:inputText styleClass="form-control" id="eventMaxPeople" value="#{createEvent.maxAmountOfParticipants}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventPrivce">Cena wydarzenia</label>
+                            <h:inputText styleClass="form-control" id="eventPrivce" value="#{createEvent.price}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventCurrency">Waluta</label>
+                            <h:inputText styleClass="form-control" id="eventCurrency" value="#{createEvent.currency}" />
+                        </div>  
+                        <div class="form-group">
+                            <label for="eventMin">Minimalny wiek</label>
+                            <h:inputText styleClass="form-control" id="eventMin" value="#{createEvent.minimalAge}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="eventMax">Maksymalny wiek</label>
+                            <h:inputText styleClass="form-control" id="eventMax" value="#{createEvent.maximalAge}" />
+                        </div>                        
+                        
+                        <h:commandButton styleClass="btn btn-default" action="#{createProject.createNewProject}" value="Submit" />
+                    </h:form>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

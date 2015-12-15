@@ -2,8 +2,8 @@ pl\agh\wfiis\facades\ParticipantFacade.class
 pl\agh\wfiis\database\Organizer.class
 pl\agh\wfiis\facades\EventFacade.class
 pl\agh\wfiis\database\Event.class
-pl\agh\wfiis\database\Organizer_.class
 pl\agh\wfiis\facades\MembersFacade.class
+pl\agh\wfiis\database\Organizer_.class
 pl\agh\wfiis\database\Participant.class
 pl\agh\wfiis\database\Members.class
 pl\agh\wfiis\database\Event_.class

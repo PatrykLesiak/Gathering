@@ -2,11 +2,20 @@ DROP VIEW v_user_role;
 DROP TABLE ORGANIZERS_GROUPS;
 DROP TABLE PARTICIPANTS_GROUPS;
 DROP TABLE Participant_to_Event;
-DROP TABLE Event;
 DROP TABLE Member;
-DROP TABLE Organizer;
 DROP TABLE Groups;
 DROP TABLE Participant;
+DROP TABLE Events_to_cathegory;
+DROP TABLE Cathegory;
+DROP TABLE Event;
+DROP TABLE Organizer;
+
+
+CREATE TABLE Cathegory
+(
+	CathegoryId int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+	Name varchar(255) NOT NULL
+);
 
 CREATE TABLE Organizer
 (
@@ -27,17 +36,24 @@ CREATE TABLE Event
 	Title varchar(255),
 	Description varchar(1024),
 	EventDate Date,
-	EventTime Time,
 	Place varchar(255),
 	PictureLink varchar(255),
 	MaxAmountOfParticipants int,
 	Price double,
 	Currency varchar(3),
-	Cathegory varchar(255),
 	MinimalAge int,
 	MaximalAge int,
 	Organizer int NOT NULL,
 	FOREIGN KEY (Organizer) REFERENCES Organizer(OrganizerId)
+);
+
+CREATE TABLE Events_to_cathegory
+(
+Id int PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+Cathegory int NOT NULL,
+Event int NOT NULL,
+FOREIGN KEY (Cathegory) REFERENCES Cathegory(CathegoryId),
+FOREIGN KEY (Event) REFERENCES Event(EventId)
 );
 
 CREATE TABLE Participant
@@ -120,7 +136,7 @@ INSERT INTO Organizer(CompanyName, CompanyIdentificationNumber, RepresentativeNa
 			'recepcja@wybrzeze.pl',
 			667362918,
 			'26987800012321361628',
-                        'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
+            'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
 			);
 
 INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password) 
@@ -132,33 +148,29 @@ INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password)
 			'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
 			);
 
-INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge, Organizer) 
+INSERT INTO Event(Title, Description, EventDate, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, MinimalAge, MaximalAge, Organizer) 
     VALUES ('Noworoczny rejs statkiem', 
 			'Całonocny rejst statkiem, aby przywitać nowy rok !',
-			DATE('2015-12-31'), 
-			TIME('18:00'),
+			DATE('2015-12-31 18:00:00'), 
 			'ul. Zamknięta 18, 80-955 Gdańsk',
 			'http://www.destination360.com/travel/new-years/images/cruises-new-years-eve.jpg',
 			400,
 			500.00,
 			'PLN',
-			'Bal',
 			18,
 			0,
 			1
 			);	
 			
-INSERT INTO Event(Title, Description, EventDate, EventTime, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, Cathegory, MinimalAge, MaximalAge, Organizer) 
+INSERT INTO Event(Title, Description, EventDate, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, MinimalAge, MaximalAge, Organizer) 
     VALUES ('Opłatek', 
 			'Uroczysta wigilijna wieczerza',
-			DATE('2015-12-24'), 
-			TIME('20:00'),
+			DATE('2015-12-24 20:00:00'),
 			'ul. Zamknięta 18, 80-955 Gdańsk',
 			'http://www.phrz.pl/upload/Gallery/restauracja-folwark-af5c9.jpg',
 			400,
 			500.00,
 			'PLN',
-			'Bal',
 			18,
 			0,
 			1
@@ -171,4 +183,7 @@ INSERT INTO PARTICIPANTS_GROUPS(participant_id, group_id) VALUES (1, 1);
 INSERT INTO ORGANIZERS_GROUPS(organizer_id, group_id) VALUES (1, 2);
 
 INSERT INTO Participant_to_Event(Participant, Event) VALUES(1, 1);
+
+INSERT INTO Cathegory(Name) VALUES('Bal');
+INSERT INTO Events_to_cathegory(Cathegory, Event) VALUES(1, 1);
 	

@@ -18,7 +18,6 @@
                             <div class="col-md-12">
                             </div>
                             <table class="table table-hover">
-                                <h:outputText value="DEBUG: #{request.getUserPrincipal().getName()}  #{userSessionManager.isUserInRole('loggedParticipant')}  #{userSessionManager.isUserInRole('loggedOrganizer')}"  />
                                 <ui:repeat value="#{eventController.getRandomEvents()}" var="randomEvent">
                                     <tr>
                                         <td>

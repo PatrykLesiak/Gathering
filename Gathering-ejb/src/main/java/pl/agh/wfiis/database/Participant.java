@@ -76,10 +76,10 @@ public class Participant implements Serializable {
     @Size(min = 1, max = 256)
     @Column(name = "PASSWORD")
     private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "participantId")
+    private Collection<ParticipantsGroups> participantsGroupsCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "participant")
     private Collection<ParticipantToEvent> participantToEventCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "participantId")
-    private Collection<UsersGroups> usersGroupsCollection;
 
     public Participant() {
     }
@@ -155,21 +155,21 @@ public class Participant implements Serializable {
     }
 
     @XmlTransient
+    public Collection<ParticipantsGroups> getParticipantsGroupsCollection() {
+        return participantsGroupsCollection;
+    }
+
+    public void setParticipantsGroupsCollection(Collection<ParticipantsGroups> participantsGroupsCollection) {
+        this.participantsGroupsCollection = participantsGroupsCollection;
+    }
+
+    @XmlTransient
     public Collection<ParticipantToEvent> getParticipantToEventCollection() {
         return participantToEventCollection;
     }
 
     public void setParticipantToEventCollection(Collection<ParticipantToEvent> participantToEventCollection) {
         this.participantToEventCollection = participantToEventCollection;
-    }
-
-    @XmlTransient
-    public Collection<UsersGroups> getUsersGroupsCollection() {
-        return usersGroupsCollection;
-    }
-
-    public void setUsersGroupsCollection(Collection<UsersGroups> usersGroupsCollection) {
-        this.usersGroupsCollection = usersGroupsCollection;
     }
 
     @Override

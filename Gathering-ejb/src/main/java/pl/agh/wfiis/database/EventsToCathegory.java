@@ -24,29 +24,29 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Patryk
  */
 @Entity
-@Table(name = "USERS_GROUPS")
+@Table(name = "EVENTS_TO_CATHEGORY")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "UsersGroups.findAll", query = "SELECT u FROM UsersGroups u"),
-    @NamedQuery(name = "UsersGroups.findById", query = "SELECT u FROM UsersGroups u WHERE u.id = :id")})
-public class UsersGroups implements Serializable {
+    @NamedQuery(name = "EventsToCathegory.findAll", query = "SELECT e FROM EventsToCathegory e"),
+    @NamedQuery(name = "EventsToCathegory.findById", query = "SELECT e FROM EventsToCathegory e WHERE e.id = :id")})
+public class EventsToCathegory implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
-    @JoinColumn(name = "PARTICIPANT_ID", referencedColumnName = "PARTICIPANTID")
+    @JoinColumn(name = "EVENT", referencedColumnName = "EVENTID")
     @ManyToOne(optional = false)
-    private Participant participantId;
-    @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID")
+    private Event event;
+    @JoinColumn(name = "CATHEGORY", referencedColumnName = "CATHEGORYID")
     @ManyToOne(optional = false)
-    private Groups groupId;
+    private Cathegory cathegory;
 
-    public UsersGroups() {
+    public EventsToCathegory() {
     }
 
-    public UsersGroups(Integer id) {
+    public EventsToCathegory(Integer id) {
         this.id = id;
     }
 
@@ -58,20 +58,20 @@ public class UsersGroups implements Serializable {
         this.id = id;
     }
 
-    public Participant getParticipantId() {
-        return participantId;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setParticipantId(Participant participantId) {
-        this.participantId = participantId;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
-    public Groups getGroupId() {
-        return groupId;
+    public Cathegory getCathegory() {
+        return cathegory;
     }
 
-    public void setGroupId(Groups groupId) {
-        this.groupId = groupId;
+    public void setCathegory(Cathegory cathegory) {
+        this.cathegory = cathegory;
     }
 
     @Override
@@ -84,10 +84,10 @@ public class UsersGroups implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UsersGroups)) {
+        if (!(object instanceof EventsToCathegory)) {
             return false;
         }
-        UsersGroups other = (UsersGroups) object;
+        EventsToCathegory other = (EventsToCathegory) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,7 +96,7 @@ public class UsersGroups implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.agh.wfiis.database.UsersGroups[ id=" + id + " ]";
+        return "pl.agh.wfiis.database.EventsToCathegory[ id=" + id + " ]";
     }
     
 }

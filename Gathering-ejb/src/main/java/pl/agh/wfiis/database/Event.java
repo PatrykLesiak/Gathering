@@ -40,13 +40,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Event.findByTitle", query = "SELECT e FROM Event e WHERE e.title = :title"),
     @NamedQuery(name = "Event.findByDescription", query = "SELECT e FROM Event e WHERE e.description = :description"),
     @NamedQuery(name = "Event.findByEventdate", query = "SELECT e FROM Event e WHERE e.eventdate = :eventdate"),
-    @NamedQuery(name = "Event.findByEventtime", query = "SELECT e FROM Event e WHERE e.eventtime = :eventtime"),
     @NamedQuery(name = "Event.findByPlace", query = "SELECT e FROM Event e WHERE e.place = :place"),
     @NamedQuery(name = "Event.findByPicturelink", query = "SELECT e FROM Event e WHERE e.picturelink = :picturelink"),
     @NamedQuery(name = "Event.findByMaxamountofparticipants", query = "SELECT e FROM Event e WHERE e.maxamountofparticipants = :maxamountofparticipants"),
     @NamedQuery(name = "Event.findByPrice", query = "SELECT e FROM Event e WHERE e.price = :price"),
     @NamedQuery(name = "Event.findByCurrency", query = "SELECT e FROM Event e WHERE e.currency = :currency"),
-    @NamedQuery(name = "Event.findByCathegory", query = "SELECT e FROM Event e WHERE e.cathegory = :cathegory"),
     @NamedQuery(name = "Event.findByMinimalage", query = "SELECT e FROM Event e WHERE e.minimalage = :minimalage"),
     @NamedQuery(name = "Event.findByMaximalage", query = "SELECT e FROM Event e WHERE e.maximalage = :maximalage")})
 public class Event implements Serializable {
@@ -65,9 +63,6 @@ public class Event implements Serializable {
     @Column(name = "EVENTDATE")
     @Temporal(TemporalType.DATE)
     private Date eventdate;
-    @Column(name = "EVENTTIME")
-    @Temporal(TemporalType.TIME)
-    private Date eventtime;
     @Size(max = 255)
     @Column(name = "PLACE")
     private String place;
@@ -82,9 +77,6 @@ public class Event implements Serializable {
     @Size(max = 3)
     @Column(name = "CURRENCY")
     private String currency;
-    @Size(max = 255)
-    @Column(name = "CATHEGORY")
-    private String cathegory;
     @Column(name = "MINIMALAGE")
     private Integer minimalage;
     @Column(name = "MAXIMALAGE")
@@ -92,6 +84,8 @@ public class Event implements Serializable {
     @JoinColumn(name = "ORGANIZER", referencedColumnName = "ORGANIZERID")
     @ManyToOne(optional = false)
     private Organizer organizer;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
+    private Collection<EventsToCathegory> eventsToCathegoryCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
     private Collection<ParticipantToEvent> participantToEventCollection;
 
@@ -134,14 +128,6 @@ public class Event implements Serializable {
         this.eventdate = eventdate;
     }
 
-    public Date getEventtime() {
-        return eventtime;
-    }
-
-    public void setEventtime(Date eventtime) {
-        this.eventtime = eventtime;
-    }
-
     public String getPlace() {
         return place;
     }
@@ -182,14 +168,6 @@ public class Event implements Serializable {
         this.currency = currency;
     }
 
-    public String getCathegory() {
-        return cathegory;
-    }
-
-    public void setCathegory(String cathegory) {
-        this.cathegory = cathegory;
-    }
-
     public Integer getMinimalage() {
         return minimalage;
     }
@@ -212,6 +190,15 @@ public class Event implements Serializable {
 
     public void setOrganizer(Organizer organizer) {
         this.organizer = organizer;
+    }
+
+    @XmlTransient
+    public Collection<EventsToCathegory> getEventsToCathegoryCollection() {
+        return eventsToCathegoryCollection;
+    }
+
+    public void setEventsToCathegoryCollection(Collection<EventsToCathegory> eventsToCathegoryCollection) {
+        this.eventsToCathegoryCollection = eventsToCathegoryCollection;
     }
 
     @XmlTransient
