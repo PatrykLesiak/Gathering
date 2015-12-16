@@ -1,17 +1,17 @@
 package pl.agh.wfiis;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Collection;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 import pl.agh.wfiis.database.Event;
 import pl.agh.wfiis.database.Organizer;
 import pl.agh.wfiis.model.OrganizerModel;
 
-
 @Named(value = "organizerController")
-@Dependent
-public class OrganizerController {
+@SessionScoped
+public class OrganizerController implements Serializable {
 
     @EJB
     OrganizerModel organizerModel;
@@ -23,4 +23,7 @@ public class OrganizerController {
         return organizerModel.getOrganizerById(organizerId);
     }
     
+    public Collection<Event> getOrganizerEvent(String organizerEmail) {
+        return organizerModel.getOrganizerEvent(organizerEmail);
+    }
 }

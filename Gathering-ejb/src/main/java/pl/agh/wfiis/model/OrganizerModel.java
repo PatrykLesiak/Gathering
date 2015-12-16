@@ -4,6 +4,7 @@ import java.util.Collection;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import pl.agh.wfiis.database.Event;
 import pl.agh.wfiis.database.Organizer;
 import pl.agh.wfiis.facades.OrganizerFacade;
 
@@ -32,4 +33,9 @@ public class OrganizerModel {
         
         return foundedOrganizer;
     }
+    
+    public Collection<Event> getOrganizerEvent(String organizerEmail) {
+        return getOrganizerByEmail(organizerEmail).getEventCollection();
+    }
+
 }

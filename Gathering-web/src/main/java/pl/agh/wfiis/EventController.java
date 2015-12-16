@@ -6,10 +6,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-
 import pl.agh.wfiis.database.Event;
 import pl.agh.wfiis.model.EventsModel;
-
 
 @Named(value = "eventController")
 @SessionScoped

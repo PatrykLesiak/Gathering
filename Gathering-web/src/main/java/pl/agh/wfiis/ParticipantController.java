@@ -20,5 +20,4 @@ public class ParticipantController {
     public Collection<Event> getParticipantEvents(String email) {
         return participantModel.getParticiantEventsByEmai(email) ;
     }
-    
 }

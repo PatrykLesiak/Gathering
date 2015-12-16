@@ -11,8 +11,6 @@ import javax.inject.Named;
 import pl.agh.wfiis.database.Cathegory;
 import pl.agh.wfiis.model.CathegoryModel;
 
-
-
 @Named(value = "cathegorySelector")
 @SessionScoped
 public class CathegorySelector implements Serializable{
@@ -48,7 +46,5 @@ public class CathegorySelector implements Serializable{
     public Map<String, Integer> getAvailableCathegories() {
     	return availableCathegories;
     }
-    
-
-    
+ 
 }

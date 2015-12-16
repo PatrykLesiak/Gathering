@@ -3,6 +3,9 @@
   <persistence-unit name="pl.agh.wfiis_Gathering-ejb_ejb_devPU" transaction-type="JTA">
     <jta-data-source>jdbc/GatheringDatabase</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>
+        <property name="eclipselink.query-results-cache" value="false" />
+        <property name="eclipselink.cache.shared.default" value="false" />
+    </properties>
   </persistence-unit>
 </persistence>

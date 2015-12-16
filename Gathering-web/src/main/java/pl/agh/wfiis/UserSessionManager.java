@@ -45,5 +45,4 @@ public class UserSessionManager implements Serializable {
         Participant participant = participantModel.getUserByEmail(request.getUserPrincipal().getName());
         return participant.getParticipantid();
     }
-    
 }
