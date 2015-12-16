@@ -59,4 +59,8 @@ public class EventsModel {
         Organizer organizer = organizerFacade.find(organizerId);
         return organizer.getEventCollection();
     }
+    
+    public void createEventInDatabase(Event newEvent) {
+        eventFacade.create(newEvent);
+    }
 }

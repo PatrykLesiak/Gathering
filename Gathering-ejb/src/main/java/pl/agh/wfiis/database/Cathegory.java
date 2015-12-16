@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Cathegory.findByCathegoryid", query = "SELECT c FROM Cathegory c WHERE c.cathegoryid = :cathegoryid"),
     @NamedQuery(name = "Cathegory.findByName", query = "SELECT c FROM Cathegory c WHERE c.name = :name")})
 public class Cathegory implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cathegory")
+    private Collection<Event> eventCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,6 +111,15 @@ public class Cathegory implements Serializable {
     @Override
     public String toString() {
         return "pl.agh.wfiis.database.Cathegory[ cathegoryid=" + cathegoryid + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Event> getEventCollection() {
+        return eventCollection;
+    }
+
+    public void setEventCollection(Collection<Event> eventCollection) {
+        this.eventCollection = eventCollection;
     }
     
 }

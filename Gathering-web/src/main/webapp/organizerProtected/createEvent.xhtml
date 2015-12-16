@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <h:body> 
@@ -24,7 +25,9 @@
                         </div>
                         <div class="form-group">
                             <label for="eventDate">Data wydarzenia</label>
-                            <h:inputText styleClass="form-control" id="eventDate" value="#{createEvent.eventData}" />
+                            <h:inputText styleClass="form-control" id="eventDate" value="#{createEvent.eventData}" >
+                                <f:convertDateTime pattern="dd-MM-yyyy"/> 
+                            </h:inputText>
                         </div>
                         <div class="form-group">
                             <label for="eventPlace">Miejsce</label>
@@ -34,28 +37,45 @@
                             <label for="eventPictureLink">Link do obrazka</label>
                             <h:inputText styleClass="form-control" id="eventPictureLink" value="#{createEvent.pictureLink}" />
                         </div>
-                        <div class="form-group">
-                            <label for="eventMaxPeople">Maksymalna liczba uczestników</label>
-                            <h:inputText styleClass="form-control" id="eventMaxPeople" value="#{createEvent.maxAmountOfParticipants}" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="eventMaxPeople">Maksymalna liczba uczestników</label>
+                                    <h:inputText styleClass="form-control" id="eventMaxPeople" value="#{createEvent.maxAmountOfParticipants}" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="eventMin">Minimalny wiek uczestnika</label>
+                                    <h:inputText styleClass="form-control" id="eventMin" value="#{createEvent.minimalAge}" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="eventMax">Maksymalny wiek uczestnika</label>
+                                    <h:inputText styleClass="form-control" id="eventMax" value="#{createEvent.maximalAge}" />
+                                </div> 
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="eventPrivce">Cena wydarzenia</label>
-                            <h:inputText styleClass="form-control" id="eventPrivce" value="#{createEvent.price}" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="eventPrivce">Cena wydarzenia</label>
+                                    <h:inputText styleClass="form-control" id="eventPrivce" value="#{createEvent.price}" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="eventCurrency">Waluta</label>
+                                    <h:inputText styleClass="form-control" id="eventCurrency" value="#{createEvent.currency}" />
+                                </div>  
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="eventCurrency">Waluta</label>
-                            <h:inputText styleClass="form-control" id="eventCurrency" value="#{createEvent.currency}" />
-                        </div>  
-                        <div class="form-group">
-                            <label for="eventMin">Minimalny wiek</label>
-                            <h:inputText styleClass="form-control" id="eventMin" value="#{createEvent.minimalAge}" />
-                        </div>
-                        <div class="form-group">
-                            <label for="eventMax">Maksymalny wiek</label>
-                            <h:inputText styleClass="form-control" id="eventMax" value="#{createEvent.maximalAge}" />
-                        </div>                        
-                        
-                        <h:commandButton styleClass="btn btn-default" action="#{createProject.createNewProject}" value="Submit" />
+                        <h:selectOneMenu styleClass="form-control" value="#{cathegorySelector.currentlySelectedCathegory}">
+                            <f:selectItems value="#{cathegorySelector.availableCathegories}" />
+                        </h:selectOneMenu>
+                        <br></br>
+                        <h:commandButton styleClass="btn btn-default" action="#{createEvent.registerNewEventInDatabase}" value="Submit" />
                     </h:form>
                 </div>
             </ui:define>

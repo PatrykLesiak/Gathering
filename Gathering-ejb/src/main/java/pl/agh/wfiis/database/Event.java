@@ -48,6 +48,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Event.findByMinimalage", query = "SELECT e FROM Event e WHERE e.minimalage = :minimalage"),
     @NamedQuery(name = "Event.findByMaximalage", query = "SELECT e FROM Event e WHERE e.maximalage = :maximalage")})
 public class Event implements Serializable {
+    @JoinColumn(name = "CATHEGORY", referencedColumnName = "CATHEGORYID")
+    @ManyToOne(optional = false)
+    private Cathegory cathegory;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -233,6 +236,14 @@ public class Event implements Serializable {
     @Override
     public String toString() {
         return "pl.agh.wfiis.database.Event[ eventid=" + eventid + " ]";
+    }
+
+    public Cathegory getCathegory() {
+        return cathegory;
+    }
+
+    public void setCathegory(Cathegory cathegory) {
+        this.cathegory = cathegory;
     }
     
 }
