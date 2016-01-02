@@ -24,7 +24,10 @@
                                     <h:outputLink value="/Gathering-web/faces/public/event.xhtml?id=#{event.eventid}" >
                                         <h:outputText value="#{event.title}" style="font-size:40px;color:black;" />
                                     </h:outputLink>
-                                </td>
+                                    <h:form>
+                                        <h:commandButton styleClass="btn btn-info" action="#{reportManager.createReport(event.eventid)}" value="Pobierz raport" />
+                                    </h:form>
+                                </td>                            
                             </tr>
                         </ui:repeat>
                     </table>

@@ -38,10 +38,9 @@ public class ParticipantModel {
     
     public Collection<Event> getParticiantEventsByEmai(String email) {
         Participant participantWithGivenEmail = getParticipantWithGivenEmail(email);
-        List<ParticipantToEvent> participantToEvent = participantToEventFacade.findAll();
         
         if (participantWithGivenEmail != null) {
-            return findParticipantEvents(participantToEvent, participantWithGivenEmail);
+            return findParticipantEvents(participantWithGivenEmail);
         }
         else {
             return null;
@@ -59,17 +58,18 @@ public class ParticipantModel {
         
         return null;
     }
-    
-    private Collection<Event> findParticipantEvents(List<ParticipantToEvent>participantToEvent,
-                                                    Participant participantWithGivenEmail) {
-        Collection<Event> participantEvents =  new ArrayList<>();
+            
+    private Collection<Event> findParticipantEvents(Participant participant) {
+        List<ParticipantToEvent> participantToEvent = participantToEventFacade.findAll();
+        Collection<Event> participantEvents = new ArrayList<>();
         
         for (ParticipantToEvent entry  : participantToEvent) {
-            if (participantWithGivenEmail == entry.getParticipant()) {
+            if (participant == entry.getParticipant()) {
                 participantEvents.add(entry.getEvent());
             }
         }
         
         return participantEvents;
     }
+    
 }
