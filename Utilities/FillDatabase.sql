@@ -143,6 +143,15 @@ INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password)
 			'M',
 			'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
 			);
+			
+INSERT INTO Participant(Name, Surname, Age, Email, Sex, Password) 
+	VALUES ('Patryk',
+			'Drugi',
+			23,
+			'patryk.lesiakk@gmail.com',
+			'M',
+			'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1'
+			);
 
 INSERT INTO Event(Title, Description, EventDate, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, MinimalAge, MaximalAge, Organizer, Cathegory) 
     VALUES ('Noworoczny rejs statkiem', 

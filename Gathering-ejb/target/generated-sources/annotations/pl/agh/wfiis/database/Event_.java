@@ -5,14 +5,16 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import pl.agh.wfiis.database.Cathegory;
 import pl.agh.wfiis.database.EventsToCathegory;
 import pl.agh.wfiis.database.Organizer;
 import pl.agh.wfiis.database.ParticipantToEvent;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-12-16T20:23:22")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-04T21:23:23")
 @StaticMetamodel(Event.class)
 public class Event_ { 
 
+    public static volatile SingularAttribute<Event, Cathegory> cathegory;
     public static volatile SingularAttribute<Event, Organizer> organizer;
     public static volatile SingularAttribute<Event, Integer> eventid;
     public static volatile SingularAttribute<Event, String> picturelink;
@@ -24,8 +26,8 @@ public class Event_ {
     public static volatile SingularAttribute<Event, String> description;
     public static volatile SingularAttribute<Event, Integer> minimalage;
     public static volatile SingularAttribute<Event, Date> eventdate;
-    public static volatile SingularAttribute<Event, Integer> maximalage;
     public static volatile SingularAttribute<Event, String> place;
+    public static volatile SingularAttribute<Event, Integer> maximalage;
     public static volatile SingularAttribute<Event, Integer> maxamountofparticipants;
 
 }

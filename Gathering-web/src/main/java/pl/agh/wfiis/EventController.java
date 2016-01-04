@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import pl.agh.wfiis.database.Event;
 import pl.agh.wfiis.model.EventsModel;
 import pl.agh.wfiis.model.ParticipantModel;
+import pl.agh.wfiis.utils.EmailManager;
 
 @Named(value = "eventController")
 @SessionScoped
@@ -27,10 +28,17 @@ Logger logger = Logger.getLogger(getClass().getName());
     @EJB
     ParticipantModel participantModel;
     
+    @EJB
+    EmailManager emailManager;
+    
     final int numberOfShownRandomProjects = 3;
     List<Event> listOfRandomEvents;
         
     public EventController() {
+    }
+    
+    public void sendEmail() {
+        emailManager.sendEmail();
     }
     
     public List<Event> getRandomEvents() {
