@@ -72,4 +72,23 @@ public class ParticipantModel {
         return participantEvents;
     }
     
+    public Boolean isParticipantSignedUpForEvent(int eventId, String participantEmail) {
+        Participant participant = getUserByEmail(participantEmail);
+        Collection<ParticipantToEvent> participantToEvents = eventFacade.find(eventId).getParticipantToEventCollection();
+        
+        for (ParticipantToEvent entry : participantToEvents) {
+            if (entry.getParticipant().equals(participant)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void signUpParticipantToEvent(int eventId, String participantEmail) {
+        ParticipantToEvent newEntry = new ParticipantToEvent();
+        newEntry.setEvent(eventFacade.find(eventId));
+        newEntry.setParticipant(getUserByEmail(participantEmail));
+
+        participantToEventFacade.create(newEntry);
+    }
 }

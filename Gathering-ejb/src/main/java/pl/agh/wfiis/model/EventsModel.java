@@ -1,9 +1,6 @@
 package pl.agh.wfiis.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -11,6 +8,8 @@ import pl.agh.wfiis.facades.EventFacade;
 import pl.agh.wfiis.database.Event;
 import pl.agh.wfiis.database.Organizer;
 import pl.agh.wfiis.facades.OrganizerFacade;
+import pl.agh.wfiis.facades.ParticipantFacade;
+import pl.agh.wfiis.facades.ParticipantToEventFacade;
 
 @Stateless
 @LocalBean
@@ -22,8 +21,13 @@ public class EventsModel {
     @EJB
     private OrganizerFacade organizerFacade;
     
+    @EJB
+    private ParticipantFacade participantFacade;
+    
+    @EJB
+    private ParticipantToEventFacade participantToEventFacade;
+    
     public List<Event> getAllEvents() {
-        List<Event> list = new ArrayList();
         return eventFacade.findAll();
     }
 
@@ -62,5 +66,25 @@ public class EventsModel {
     
     public void createEventInDatabase(Event newEvent) {
         eventFacade.create(newEvent);
+    }
+    
+    public Collection<Event> getAllFutureEvents() {
+        Collection<Event> events = eventFacade.findAll();
+        Iterator<Event> iterator = events.iterator();
+        
+        while(iterator.hasNext()) {
+            if (iterator.next().getEventdate().before(new Date())) {
+                iterator.remove();
+            }
+        }
+        return events;
+    }
+    
+    public int getNumberOfParticipantsSignedUpForEvent(int eventId) {  
+        return eventFacade.find(eventId).getParticipantToEventCollection().size();
+    }
+    
+    public int getMaxNumberOfParticipantsForEvent(int eventId) {
+        return eventFacade.find(eventId).getMaxamountofparticipants();
     }
 }

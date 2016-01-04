@@ -174,6 +174,21 @@ INSERT INTO Event(Title, Description, EventDate, Place, PictureLink , MaxAmountO
 			2
 			);
 			
+INSERT INTO Event(Title, Description, EventDate, Place, PictureLink , MaxAmountOfParticipants, Price, Currency, MinimalAge, MaximalAge, Organizer, Cathegory) 
+    VALUES ('Rejs statkiem', 
+			'Rejs luksusowym statkiem po Bałtyku wraz z poczęstunkiem na pokładzie.',
+			DATE('2016-02-10 16:00:00'),
+			'ul. Zamknięta 18, 80-955 Gdańsk',
+			'http://www.sunreef-charter.com/img/special_offers/99-1.jpg',
+			400,
+			500.00,
+			'PLN',
+			18,
+			0,
+			1, 
+			2
+			);
+			
 INSERT INTO Groups(group_id,group_name) VALUES (1,'loggedParticipant');
 INSERT INTO Groups(group_id,group_name) VALUES (2,'loggedOrganizer');
 

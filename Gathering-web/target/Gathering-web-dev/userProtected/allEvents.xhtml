@@ -2,19 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:body> 
         <ui:composition template="../templates/defaultLayout.xhtml">
-            <ui:define name="pageTitle">Moje wydarzenia</ui:define>
+            <ui:define name="pageTitle">Wszystkie aktualne wydarzenia</ui:define>
 
             <ui:define name="content">
                 <div class="row">
                     <div class="col-md-12">
                     </div>
                     <table class="table table-hover">
-                        <ui:repeat value="#{participantController.getParticipantEvents(request.getUserPrincipal().getName())}" var="event">
+                        <ui:repeat value="#{eventController.getAllFutureEvents()}" var="event">
                             <tr>
                                 <td>
                                     <div class="col-md-3 text-center">
@@ -27,6 +26,12 @@
                                     <h:outputLink value="/Gathering-web/faces/public/organizerProfile.xhtml?id=#{event.organizer.organizerid}" >
                                         <h:outputText value="Organizator: #{event.organizer.companyname}" style="font-size:20px;" />
                                     </h:outputLink>
+                                    <h:form>
+                                        <h:commandButton styleClass="btn btn-success"
+                                                         action="#{eventController.signUpLoggedParticipantToEvent(event.eventid)}" 
+                                                         value="Zapisz się"
+                                                         rendered="#{eventController.canParticipantSignUpForEvent(event.eventid)}"/>
+                                    </h:form>
                                 </td>
                             </tr>
                         </ui:repeat>
