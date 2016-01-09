@@ -48,7 +48,7 @@ public class EmailManager {
         sendEmail(createMessageForSigningIntoEvent(userEmail, eventsModel.getEventById(eventId)));
     }
 
-    private Properties prepareEmailProperties() {
+    public Properties prepareEmailProperties() {
         Properties properties = new Properties();
         properties.setProperty("mail.transport.protocol", "smtp");
         properties.setProperty("mail.host", "poczta.o2.pl");
@@ -78,7 +78,7 @@ public class EmailManager {
         transport.close();
     }
     
-    private String confirmationMessage(Event event) {
+    public String confirmationMessage(Event event) {
         return "Potwierdzenie zapisu na wydarzenie " + event.getTitle() + 
                 "\nOrganizator wydarzenia (" + event.getOrganizer().getCompanyname() + ")" +
                 " skontaktuje się z Panem/Panią w związku z przekazaniem biletu wstępu." + 
