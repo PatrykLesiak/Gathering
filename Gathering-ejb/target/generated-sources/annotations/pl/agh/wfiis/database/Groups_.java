@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import pl.agh.wfiis.database.OrganizersGroups;
 import pl.agh.wfiis.database.ParticipantsGroups;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-04T21:23:23")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-10T18:03:46")
 @StaticMetamodel(Groups.class)
 public class Groups_ { 
 

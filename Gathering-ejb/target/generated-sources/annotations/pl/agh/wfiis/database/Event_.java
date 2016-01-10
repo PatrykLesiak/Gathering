@@ -10,7 +10,7 @@ import pl.agh.wfiis.database.EventsToCathegory;
 import pl.agh.wfiis.database.Organizer;
 import pl.agh.wfiis.database.ParticipantToEvent;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-04T21:23:23")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-10T18:03:46")
 @StaticMetamodel(Event.class)
 public class Event_ { 
 

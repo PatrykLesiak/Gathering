@@ -23,9 +23,9 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdownEvents">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
+                                <a id="eventDropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><h:link value="Nowe wydarzenie" outcome="/organizerProtected/createEvent.xhtml" /></li>
+                                    <li><h:link id="newEventLink" value="Nowe wydarzenie" outcome="/organizerProtected/createEvent.xhtml" /></li>
                                     <li role="separator" class="divider"></li>
                                     <li><h:link value="Moje wydarzenie" outcome="/organizerProtected/organizerEvents.xhtml" /></li>
                                 </ul>

@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import pl.agh.wfiis.database.Event;
 import pl.agh.wfiis.database.Participant;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-04T21:23:23")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-10T18:03:46")
 @StaticMetamodel(ParticipantToEvent.class)
 public class ParticipantToEvent_ { 
 
